@@ -3,8 +3,6 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
-
 namespace System.Device.I2s
 {
     /// <summary>
@@ -23,8 +21,10 @@ namespace System.Device.I2s
         private I2sChannelFormat _i2sChannelFormat = I2sChannelFormat.RightLeft;
 
         private I2sCommunicationFormat _i2sConnectionFormat = I2sCommunicationFormat.I2S;
-        
+
         private int _bufferSize = 10000;
+
+        private int _dmaBufferCount = 2;
 
         /// <summary>
         /// Initializes new instance of I2sConnectionSettings.
@@ -52,6 +52,7 @@ namespace System.Device.I2s
             ChannelFormat = other.ChannelFormat;
             BitsPerSample = other.BitsPerSample;
             BufferSize = other.BufferSize;
+            DmaBufferCount = other.DmaBufferCount;
         }
 
         /// <summary>
@@ -143,6 +144,19 @@ namespace System.Device.I2s
         {
             get => _bufferSize;
             set => _bufferSize = value;
+        }
+
+        /// <summary>
+        /// DMA Buffer Count.
+        /// Sets <c>dma_buf_count</c>.
+        /// </summary>
+        /// <remarks>
+        /// Defaults to <c>2</c>.
+        /// </remarks>
+        public int DmaBufferCount
+        {
+            get => _dmaBufferCount;
+            set => _dmaBufferCount = value;
         }
     }
 }
